@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnglishAcademy - Impara l'Inglese Online</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #0d9488 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .interactive-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .interactive-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- TOP BAR TICKER -->
+  <div class="bg-slate-900 text-white text-xs font-semibold py-2.5 px-4 overflow-hidden relative">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-500 text-slate-950 uppercase tracking-wider">Offerta Lancio</span>
+        <span class="text-slate-300 hidden sm:inline">Prenota oggi la prima lezione di prova gratuita con un tutor madrelingua!</span>
+      </div>
+      <a href="#test-livello" class="underline hover:text-emerald-400 transition-colors">Fai il test di livello gratis &rarr;</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-xl font-black shadow-md shadow-blue-500/30">
+          EA
+        </div>
+        <span class="text-2xl font-black tracking-tight text-slate-900">English<span class="text-blue-600">Academy</span></span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#metodo" class="hover:text-blue-600 transition">Metodo</a>
+        <a href="#corsi" class="hover:text-blue-600 transition">Corsi e Piani</a>
+        <a href="#test-livello" class="hover:text-blue-600 transition">Test di Livello</a>
+        <a href="#recensioni" class="hover:text-blue-600 transition">Recensioni</a>
+        <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#prenota" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-5 py-3 rounded-xl shadow-lg shadow-blue-600/25 transition-all transform active:scale-95">
+          Prenota Prova Gratuita
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Copy -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/60 rounded-full px-4 py-1.5 mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wide text-blue-700">La prima scuola d'inglese 100% interattiva</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
+            Parla inglese con <span class="gradient-text">sicurezza e naturalezza</span> fin dal primo giorno
+          </h1>
+          
+          <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Dimentica la solita grammatica noiosa. Impara con tutor madrelingua in lezioni individuali o piccoli gruppi su misura per la tua carriera, i tuoi viaggi e il tuo futuro.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#prenota" class="bg-blue-600 hover:bg-blue-700 text-white text-base font-bold px-8 py-4 rounded-xl shadow-xl shadow-blue-600/30 transition-all text-center">
+              <i class="fa-solid fa-calendar-check mr-2"></i> Prenota Lezione di Prova
+            </a>
+            <a href="#test-livello" class="bg-white hover:bg-slate-100 text-slate-700 text-base font-bold px-8 py-4 rounded-xl border border-slate-200 shadow-sm transition-all text-center">
+              <i class="fa-solid fa-list-check mr-2"></i> Fai il Test di Livello (3 min)
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="mt-10 pt-8 border-t border-slate-200/80 flex items-center justify-center lg:justify-start gap-8 text-slate-500">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-amber-400 text-lg"></i>
+              <span class="text-sm font-bold text-slate-800">4.9/5</span>
+              <span class="text-xs text-slate-500">(500+ studenti)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved text-emerald-500 text-lg"></i>
+              <span class="text-sm font-bold text-slate-800">100% Soddisfatti o Rimborsati</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Classroom Card -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Decorative Glow -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-teal-500 rounded-3xl blur opacity-30"></div>
+            
+            <div class="relative bg-slate-900 rounded-2xl p-6 text-white shadow-2xl border border-slate-800">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                  <span class="text-xs font-semibold text-slate-300">AULA VIRTUALE IN LIVE</span>
+                </div>
+                <span class="text-xs bg-blue-900/60 text-blue-300 px-2.5 py-1 rounded-md font-mono">1-on-1 Session</span>
+              </div>
+
+              <!-- Classroom Mockup -->
+              <div class="space-y-4">
+                <div class="relative rounded-xl overflow-hidden bg-slate-800 aspect-video flex items-center justify-center border border-slate-700">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Tutor" class="w-full h-full object-cover">
+                  <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-microphone text-emerald-400"></i> Sarah (Madrelingua UK)
+                  </div>
+                </div>
+
+                <div class="bg-slate-800/80 rounded-xl p-4 border border-slate-700/60">
+                  <p class="text-xs text-slate-400 mb-1">Focus di Oggi:</p>
+                  <p class="text-sm font-semibold text-slate-200">"Business English: Master your Pitch Presentation"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METODO SECTION -->
+  <section id="metodo" class="py-20 bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest">Il Nostro Metodo</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Perché i nostri studenti imparano 3 volte più velocemente</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200/80 interactive-hover">
+          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">80% Conversazione Pratica</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Meno teoria, più parlato immediato. Ogni lezione è strutturata per farti simulare situazioni reali di vita, lavoro e viaggio.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200/80 interactive-hover">
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Tutor Madrelingua Selezionati</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Docenti certificati TEFL/CELTA con esperienza di insegnamento. Scegli il tuo tutor in base ai tuoi interessi e obiettivi.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200/80 interactive-hover">
+          <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Flessibilità Totale H24</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Pianifica o riprogramma le tue lezioni con 24 ore di preavviso dal tuo smartphone o iPad tramite il calendario integrato.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TEST DI LIVELLO QUIZ -->
+  <section id="test-livello" class="py-20 bg-slate-900 text-white relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="bg-blue-600/30 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-500/30">Quiz Interattivo Rapido</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">Qual è il tuo livello attuale di Inglese?</h2>
+        <p class="text-slate-400 text-sm mt-2">Rispondi a questa semplice domanda per scoprirlo subito e ricevere un consiglio su misura!</p>
+      </div>
+
+      <div class="bg-slate-800 rounded-2xl p-6 sm:p-10 border border-slate-700 shadow-2xl">
+        <p class="text-lg font-semibold text-slate-200 mb-6">Come ti senti quando devi parlare in inglese con un estraneo?</p>
+
+        <div class="space-y-3" id="quiz-options">
+          <button onclick="selectQuizAnswer(this, 'Principiante (A1-A2)')" class="w-full text-left p-4 rounded-xl bg-slate-700/50 hover:bg-blue-600/20 border border-slate-600 hover:border-blue-500 transition flex justify-between items-center group">
+            <span class="text-slate-200 font-medium group-hover:text-white">A) Mi blocco totalmente e non trovo le parole.</span>
+            <i class="fa-regular fa-circle text-slate-500 group-hover:text-blue-400"></i>
+          </button>
+          
+          <button onclick="selectQuizAnswer(this, 'Intermedio (B1-B2)')" class="w-full text-left p-4 rounded-xl bg-slate-700/50 hover:bg-blue-600/20 border border-slate-600 hover:border-blue-500 transition flex justify-between items-center group">
+            <span class="text-slate-200 font-medium group-hover:text-white">B) Riesco a farmi capire ma faccio molti errori di grammatica.</span>
+            <i class="fa-regular fa-circle text-slate-500 group-hover:text-blue-400"></i>
+          </button>
+
+          <button onclick="selectQuizAnswer(this, 'Avanzato (C1-C2)')" class="w-full text-left p-4 rounded-xl bg-slate-700/50 hover:bg-blue-600/20 border border-slate-600 hover:border-blue-500 transition flex justify-between items-center group">
+            <span class="text-slate-200 font-medium group-hover:text-white">C) Parlo in modo fluido, ma voglio perfezionare il linguaggio Business.</span>
+            <i class="fa-regular fa-circle text-slate-500 group-hover:text-blue-400"></i>
+          </button>
+        </div>
+
+        <div id="quiz-result" class="hidden mt-8 p-6 bg-blue-600/20 border border-blue-500/50 rounded-xl text-center">
+          <h4 class="text-xl font-bold text-blue-300 mb-2">Livello Stimato: <span id="level-detected" class="text-white"></span></h4>
+          <p class="text-sm text-slate-300 mb-4">Il corso consigliato per te è il piano <strong class="text-white">Standard 1-on-1</strong>.</p>
+          <a href="#prenota" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-6 py-3 rounded-lg shadow-lg transition">Prenota la prova per questo livello &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORSI E PIANI DI PREZZO -->
+  <section id="corsi" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest">Piani e Prezzi</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Investi nel tuo futuro senza vincoli</p>
+        <p class="text-slate-600 text-sm mt-2">Disdici o metti in pausa il tuo abbonamento quando vuoi, con un solo clic.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- PLAN 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-8 flex flex-col justify-between interactive-hover">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Per Iniziare</span>
+            <h3 class="text-2xl font-bold text-slate-900 mt-1">Conversazione Group</h3>
+            <p class="text-xs text-slate-500 mt-1">Piccoli gruppi di massimo 4 persone per fare pratica costante.</p>
+            
+            <div class="my-6">
+              <span class="text-4xl font-black text-slate-900">€49</span>
+              <span class="text-slate-500 text-sm font-medium">/mese</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-slate-600 mb-8">
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> 4 Lezioni di gruppo da 50 min</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> Max 4 studenti per classe</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> Accesso alla community chat</li>
+              <li class="flex items-center gap-3 text-slate-400"><i class="fa-solid fa-xmark"></i> Nessuna lezione individuali</li>
+            </ul>
+          </div>
+          
+          <a href="#prenota" class="w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3.5 rounded-xl transition">Scegli Conversazione</a>
+        </div>
+
+        <!-- PLAN 2 (HIGHLIGHTED) -->
+        <div class="bg-gradient-to-b from-blue-900 to-slate-900 text-white rounded-2xl p-8 flex flex-col justify-between relative shadow-2xl transform lg:-translate-y-3 border-2 border-blue-500">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+            Scelto dall'80% degli Studenti
+          </div>
+          
+          <div>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Consigliato</span>
+            <h3 class="text-2xl font-bold text-white mt-1">Standard 1-on-1</h3>
+            <p class="text-xs text-slate-300 mt-1">Lezioni individuali personalizzate sui tuoi ritmi.</p>
+            
+            <div class="my-6">
+              <span class="text-4xl font-black text-white">€119</span>
+              <span class="text-slate-300 text-sm font-medium">/mese</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-slate-200 mb-8">
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 4 Lezioni individuali 1-on-1</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Tutor madrelingua dedicato</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Programma personalizzato</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Correzione compiti e report finale</li>
+            </ul>
+          </div>
+
+          <a href="#prenota" class="w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition">Inizia Ora Gratis</a>
+        </div>
+
+        <!-- PLAN 3 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-8 flex flex-col justify-between interactive-hover">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Per la Carriera</span>
+            <h3 class="text-2xl font-bold text-slate-900 mt-1">Business English</h3>
+            <p class="text-xs text-slate-500 mt-1">Per colloqui di lavoro, email, presentazioni e negoziazioni.</p>
+            
+            <div class="my-6">
+              <span class="text-4xl font-black text-slate-900">€199</span>
+              <span class="text-slate-500 text-sm font-medium">/mese</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-slate-600 mb-8">
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> 8 Lezioni individuali intensive</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> Preparazione CV e Colloqui</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> Certificato finale di livello</li>
+              <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-500"></i> Supporto via WhatsApp 7/7</li>
+            </ul>
+          </div>
+
+          <a href="#prenota" class="w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3.5 rounded-xl transition">Scegli Business</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS / RIPROVA SOCIALE -->
+  <section id="recensioni" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest">Testimonianze</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Cosa dicono i nostri studenti</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-700 text-sm leading-relaxed mb-6">
+            "Dovevo superare un colloquio per un'azienda multinazionale. Con 4 lezioni intensive ho sbloccato l'ansia di parlare e ho ottenuto il posto!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">MG</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Marta G.</h4>
+              <p class="text-xs text-slate-500">Marketing Manager</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-700 text-sm leading-relaxed mb-6">
+            "La possibilità di prenotare le lezioni la sera dopo il lavoro è fantastica. Gli insegnanti sono pazientissimi e super preparati."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-sm">DL</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Daniele L.</h4>
+              <p class="text-xs text-slate-500">Software Engineer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-700 text-sm leading-relaxed mb-6">
+            "Ho provato molte app famose senza risultati. Questo metodo basato sulla conversazione reale fa davvero la differenza."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-sm">SR</div>
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Sara R.</h4>
+              <p class="text-xs text-slate-500">Studentessa Universitaria</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIDGET PRENOTAZIONE LEZIONE -->
+  <section id="prenota" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Inizia il tuo percorso</span>
+      <h2 class="text-3xl sm:text-4xl font-black mt-2">Prenota la tua Lezione di Prova Gratuita</h2>
+      <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">Senza impegno e senza inserire carte di credito. Scegli il giorno e l'orario che preferisci.</p>
+
+      <div class="mt-10 bg-slate-800 p-8 rounded-2xl border border-slate-700 max-w-lg mx-auto text-left shadow-xl">
+        <form onsubmit="event.preventDefault(); alert('Prenotazione ricevuta! Ti invieremo un link Zoom via Email/WhatsApp.');" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nome e Cognome</label>
+            <input type="text" required placeholder="Mario Rossi" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Email</label>
+            <input type="email" required placeholder="mario.rossi@email.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Numero WhatsApp</label>
+            <input type="tel" required placeholder="+39 333 1234567" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Giorno Preferito</label>
+            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+              <option>Domani - 15:00</option>
+              <option>Domani - 18:00</option>
+              <option>Dopodomani - 10:00</option>
+              <option>Dopodomani - 17:00</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition mt-4">
+            Conferma Prenotazione Gratuita
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest">Risposte Rapide</h2>
+        <p class="text-3xl font-extrabold text-slate-900 mt-2">Domande Frequenti</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl p-6 border border-slate-200/80 group">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center">
+            Come funziona la lezione di prova gratuita?
+            <span class="text-blue-600 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+            La lezione dura 25 minuti. Incontrerai un nostro tutor via Zoom o Google Meet per valutare il tuo livello attuale e definire insieme un piano di studi personalizzato.
+          </p>
+        </details>
+
+        <details class="bg-white rounded-xl p-6 border border-slate-200/80 group">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center">
+            Quali strumenti servono per frequentare le lezioni?
+            <span class="text-blue-600 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+            Ti serve solo una connessione internet stabile e un dispositivo (PC, iPad, Tablet o Smartphone) dotato di webcam e microfono.
+          </p>
+        </details>
+
+        <details class="bg-white rounded-xl p-6 border border-slate-200/80 group">
+          <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center">
+            Posso cancellare o spostare una lezione prenotata?
+            <span class="text-blue-600 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+            Certamente! Puoi disdire o riprogrammare qualsiasi lezione direttamente dalla tua area personale fino a 24 ore prima dell'inizio senza perdere il credito.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xl font-bold text-white">EnglishAcademy</span>
+        <span class="text-xs text-slate-600">© 2026 Tutti i diritti riservati</span>
+      </div>
+
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Termini di Servizio</a>
+        <a href="#" class="hover:text-white transition">Contatti</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 z-50">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- QUIZ INTERACTIVE SCRIPT -->
+  <script>
+    function selectQuizAnswer(button, level) {
+      document.getElementById('quiz-result').classList.remove('hidden');
+      document.getElementById('level-detected').innerText = level;
+    }
+  </script>
+</body>
+</html>
