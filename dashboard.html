@@ -11,16 +11,16 @@
     <!-- Header -->
     <div class="flex justify-between items-center bg-slate-800 p-6 rounded-2xl border border-slate-700">
       <div>
-        <h1 class="text-2xl font-bold" id="welcomeUser">Benvenuto Studente!</h1>
+        <h1 class="text-2xl font-bold" id="welcomeUser">Benvenuto!</h1>
         <p class="text-slate-400 text-sm">Ecco lo stato del tuo percorso</p>
       </div>
-      <button id="logoutBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-semibold text-sm">Esci</button>
+      <button id="logoutBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-semibold text-sm transition">Esci</button>
     </div>
 
     <!-- Progresso Corso -->
     <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
       <div class="flex justify-between items-center">
-        <h2 class="text-xl font-bold text-blue-400" id="courseName">Corso in caricamento...</h2>
+        <h2 class="text-xl font-bold text-blue-400" id="courseName">Caricamento corso...</h2>
         <span class="text-lg font-bold text-teal-400" id="progressPercent">0%</span>
       </div>
       <!-- Barra di Stato -->
@@ -29,14 +29,56 @@
       </div>
       <p class="text-sm text-slate-400" id="lessonsStatus">Lezioni completate: 0 su 0</p>
     </div>
-
-    <!-- Lista Lezioni -->
-    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-      <h3 class="text-lg font-bold mb-4">Lezioni del Percorso</h3>
-      <ul id="lessonsList" class="space-y-3">
-        <li class="text-slate-400">Caricamento lezioni in corso...</li>
-      </ul>
-    </div>
   </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AiZaSyCcdu1Tbezrgw9uMEe9uoNYZLwf-8",
+      authDomain: "english-academy-dfb76.firebaseapp.com",
+      projectId: "english-academy-dfb76",
+      storageBucket: "english-academy-dfb76.firebasestorage.app",
+      messagingSenderId: "894159383786",
+      appId: "1:894159383786:web:5b0ae4c5784d48e9327b93",
+      measurementId: "G-YYTKFZSWWS"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        document.getElementById('welcomeUser').textContent = `Benvenuto, ${user.email}`;
+        
+        const userDoc = await getDoc(doc(db, "studenti", user.uid));
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          document.getElementById('courseName').textContent = data.corso || "Corso di Inglese";
+          
+          const svolte = data.lezioniSvolte || 0;
+          const totali = data.lezioniTotali || 10;
+          const percentuale = Math.round((svolte / totali) * 100);
+
+          document.getElementById('progressPercent').textContent = `${percentuale}%`;
+          document.getElementById('progressBar').style.width = `${percentuale}%`;
+          document.getElementById('lessonsStatus').textContent = `Lezioni completate: ${svolte} su ${totali}`;
+        } else {
+          document.getElementById('courseName').textContent = "Nessun corso attivo assegnato";
+        }
+      } else {
+        window.location.href = "/login.html";
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      signOut(auth).then(() => {
+        window.location.href = "/login.html";
+      });
+    });
+  </script>
 </body>
 </html>
