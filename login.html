@@ -24,5 +24,38 @@
     </form>
     <p id="errorMsg" class="text-red-400 text-sm mt-4 text-center hidden"></p>
   </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AiZaSyCcdu1Tbezrgw9uMEe9uoNYZLwf-8",
+      authDomain: "english-academy-dfb76.firebaseapp.com",
+      projectId: "english-academy-dfb76",
+      storageBucket: "english-academy-dfb76.firebasestorage.app",
+      messagingSenderId: "894159383786",
+      appId: "1:894159383786:web:5b0ae4c5784d48e9327b93",
+      measurementId: "G-YYTKFZSWWS"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "/dashboard.html";
+      } catch (error) {
+        errorMsg.textContent = "Email o password non valide.";
+        errorMsg.classList.remove('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
