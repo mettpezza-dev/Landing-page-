@@ -52,7 +52,8 @@
         await signInWithEmailAndPassword(auth, email, password);
         window.location.href = "/dashboard.html";
       } catch (error) {
-        errorMsg.textContent = "Email o password non valide.";
+        console.error(error);
+        errorMsg.textContent = "Email o password non valide: " + error.code;
         errorMsg.classList.remove('hidden');
       }
     });
