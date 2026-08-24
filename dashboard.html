@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La tua Dashboard - English Academy</title>
+  <title>Dashboard Studente - English Academy</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-6">
   <div class="max-w-4xl mx-auto space-y-6">
+    
     <!-- Header -->
     <div class="flex justify-between items-center bg-slate-800 p-6 rounded-2xl border border-slate-700">
       <div>
-        <h1 class="text-2xl font-bold" id="welcomeUser">Benvenuto!</h1>
-        <p class="text-slate-400 text-sm">Ecco lo stato del tuo percorso</p>
+        <h1 class="text-2xl font-bold">Dashboard Studente</h1>
+        <p id="welcomeUser" class="text-slate-400">Caricamento utente...</p>
       </div>
-      <button id="logoutBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-semibold text-sm transition">Esci</button>
+      <button id="logoutBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-semibold transition">
+        Esci
+      </button>
     </div>
 
     <!-- Progresso Corso -->
@@ -23,17 +26,20 @@
         <h2 class="text-xl font-bold text-blue-400" id="courseName">Caricamento corso...</h2>
         <span class="text-lg font-bold text-teal-400" id="progressPercent">0%</span>
       </div>
+      
       <!-- Barra di Stato -->
       <div class="w-full bg-slate-700 h-4 rounded-full overflow-hidden">
         <div id="progressBar" class="bg-teal-400 h-full w-0 transition-all duration-500"></div>
       </div>
+      
       <p class="text-sm text-slate-400" id="lessonsStatus">Lezioni completate: 0 su 0</p>
     </div>
+
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -50,30 +56,51 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
+    // Mantiene l'utente connesso nella sessione locale
+    setPersistence(auth, browserLocalPersistence);
+
+    // Listener sullo stato di autenticazione
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        document.getElementById('welcomeUser').textContent = `Benvenuto, ${user.email}`;
+        console.log("Utente connesso con successo:", user.uid);
         
-        const userDoc = await getDoc(doc(db, "studenti", user.uid));
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          document.getElementById('courseName').textContent = data.corso || "Corso di Inglese";
-          
-          const svolte = data.lezioniSvolte || 0;
-          const totali = data.lezioniTotali || 10;
-          const percentuale = Math.round((svolte / totali) * 100);
+        const welcomeEl = document.getElementById('welcomeUser');
+        if (welcomeEl) welcomeEl.textContent = `Benvenuto, ${user.email}`;
 
-          document.getElementById('progressPercent').textContent = `${percentuale}%`;
-          document.getElementById('progressBar').style.width = `${percentuale}%`;
-          document.getElementById('lessonsStatus').textContent = `Lezioni completate: ${svolte} su ${totali}`;
-        } else {
-          document.getElementById('courseName').textContent = "Nessun corso attivo assegnato";
+        try {
+          const userDoc = await getDoc(doc(db, "studenti", user.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+
+            const courseEl = document.getElementById('courseName');
+            if (courseEl) courseEl.textContent = data.corso || "Corso di Inglese";
+
+            const svolte = Number(data.lezioniSvolte) || 0;
+            const totali = Number(data.lezioniTotali) || 10;
+            const percentuale = totali > 0 ? Math.round((svolte / totali) * 100) : 0;
+
+            const percentEl = document.getElementById('progressPercent');
+            const barEl = document.getElementById('progressBar');
+            const statusEl = document.getElementById('lessonsStatus');
+
+            if (percentEl) percentEl.textContent = `${percentuale}%`;
+            if (barEl) barEl.style.width = `${percentuale}%`;
+            if (statusEl) statusEl.textContent = `Lezioni completate: ${svolte} su ${totali}`;
+          } else {
+            console.warn("Nessun documento trovato in 'studenti' con ID:", user.uid);
+            const courseEl = document.getElementById('courseName');
+            if (courseEl) courseEl.textContent = "Profilo Studente in fase di attivazione";
+          }
+        } catch (err) {
+          console.error("Errore recupero Firestore:", err);
         }
       } else {
+        console.log("Nessun utente autenticato. Reindirizzamento al login...");
         window.location.href = "/login.html";
       }
     });
 
+    // Gestione Pulsante Logout
     document.getElementById('logoutBtn').addEventListener('click', () => {
       signOut(auth).then(() => {
         window.location.href = "/login.html";
